@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class PracticeTest {
 
@@ -32,5 +33,30 @@ class PracticeTest {
 
         // then
         assertThat(subStr).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("charAt 테스트 - index 내 성공 케이스")
+    void charAtTest() {
+        // given
+        String givenStr = "abc";
+
+        // when
+        char c = givenStr.charAt(1);
+
+        // then
+        assertThat(c).isEqualTo('b');
+    }
+
+    @Test
+    @DisplayName("charAt 테스트 - index 밖 접근 예외 케이스")
+    void charAtTestForException() {
+        // given
+        String givenStr = "abc";
+
+        // then
+        assertThatThrownBy(() -> givenStr.charAt(5))
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageStartingWith("String index out of range: 5");
     }
 }
