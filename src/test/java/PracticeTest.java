@@ -20,4 +20,17 @@ class PracticeTest {
         assertThat(splitStrArr1).contains("1", "2");
         assertThat(splitStrArr2).containsExactly("1");
     }
+
+    @Test
+    @DisplayName("subString 테스트")
+    void subStringTest() {
+        // given
+        String numbersStr = "(1,2)";
+
+        // when
+        String subStr = numbersStr.substring(1, 4);
+
+        // then
+        assertThat(subStr).isEqualTo("1,2");
+    }
 }
